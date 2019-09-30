@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+
+{% block title %}
+AuditEY Tools
+{% endblock %}
+
+
+{% block body %}
+
+<link href="/static/index.css" rel="stylesheet">
+
+
+<div class="bg-text">Better Questions. Better Answers.</div>
+
+
+<div class="fullscreen-bg">
+  <video loop muted autoplay poster="/static/EYHero.jpg" id="video" class="fullscreen-bg__video">
+    <source src="/static/EYHero.mp4">
+  </video>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
+<script type="text/javascript" charset="utf-8">
+    var socket = io();
+    socket.on('connect', function() {
+        socket.emit('my event', {data: 'I\'m connected!'});
+        console.log("Websocket Connected");
+
+    socket.on('output', function (msg) {
+        console.log(msg);
+        Swal.fire({
+              title: 'E-Mails Ready!',
+              html:"<br/><a href='"+msg+"' class='btn btn-success'>Click Here to Retrieve</a> <br/>",
+              showConfirmButton:false,
+              type:'success'
+            })
+    });
+
+
+    });
+</script>
+
+
+
+{% endblock %}

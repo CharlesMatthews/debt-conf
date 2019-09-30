@@ -1,0 +1,160 @@
+{% extends "layout.html" %}
+
+{% block title %}
+AuditEY_Debtors Confirmations - Data Entry
+{% endblock %}
+
+
+{% block body %}
+
+<div class="container">
+
+
+<form method="POST" action="" enctype="multipart/form-data">
+
+  {{ form.hidden_tag() }}
+
+  <fieldset class="form-group">
+    <h1>Data Entry For Debtor Confirmation Letters & Emails</h1>
+    <div class="form-group">
+      {{ form.name.label(class="form-control-label")  }}
+
+      {% if form.name.errors %}
+        {{form.name(class="form-control form-control-lg is-invalid")}}
+        <div class="invalid-feedback">
+          {% for error in form.name.errors %}
+            <span> {{ error }}</span>
+          {% endfor %}
+
+        </div>
+      {% else %}
+        {{ form.name(class="form-control from-control-lg")  }}
+      {% endif %}
+  </div>
+
+
+    <div class="form-group">
+      {{ form.email.label(class="form-control-label")  }}
+
+
+      {% if form.email.errors %}
+        {{form.email(class="form-control form-control-lg is-invalid")}}
+        <div class="invalid-feedback">
+          {% for error in form.email.errors %}
+            <span> {{ error }}</span>
+          {% endfor %}
+
+        </div>
+      {% else %}
+        {{ form.email(class="form-control from-control-lg")  }}
+      {% endif %}
+
+    </div>
+    <div class="form-group">
+      {{ form.yearend.label(class="form-control-label")  }}
+      {% if form.yearend.errors %}
+        {{form.yearend(class="form-control form-control-lg is-invalid")}}
+        <div class="invalid-feedback">
+          {% for error in form.yearend.errors %}
+            <span> {{ error }}</span>
+          {% endfor %}
+
+        </div>
+      {% else %}
+        {{ form.yearend(class="form-control from-control-lg")  }}
+      {% endif %}
+    </div>
+
+    <div class="form-group">
+      {{ form.client_name.label(class="form-control-label")  }}
+
+      {% if form.client_name.errors %}
+        {{form.client_name(class="form-control form-control-lg is-invalid")}}
+        <div class="invalid-feedback">
+          {% for error in form.client_name.errors %}
+            <span> {{ error }}</span>
+          {% endfor %}
+
+        </div>
+      {% else %}
+        {{ form.client_name(class="form-control from-control-lg")  }}
+      {% endif %}
+    </div>
+
+
+
+
+    <div class="form-group">
+      {{ form.client_signatory.label(class="form-control-label")  }}
+
+      {% if form.client_signatory.errors %}
+        {{form.client_signatory(class="form-control form-control-lg is-invalid")}}
+        <div class="invalid-feedback">
+          {% for error in form.client_signatory.errors %}
+            <span> {{ error }}</span>
+          {% endfor %}
+
+        </div>
+      {% else %}
+        {{ form.client_signatory(class="form-control from-control-lg")  }}
+      {% endif %}
+    </div>
+
+
+    <div class="form-group">
+      {{ form.samplesize.label(class="form-control-label")  }}
+
+      {% if form.samplesize.errors %}
+        {{form.samplesize(class="form-control form-control-lg is-invalid")}}
+        <div class="invalid-feedback">
+          {% for error in form.samplesize.errors %}
+            <span> {{ error }}</span>
+          {% endfor %}
+
+        </div>
+      {% else %}
+        {{ form.samplesize(class="form-control from-control-lg")  }}
+      {% endif %}
+    </div>
+
+    <div class="form-group">
+                         {{ form.datafile.label() }}
+                         {{ form.datafile(class="form-control-file") }}
+                         {% if form.datafile.errors %}
+                             {% for error in form.datafile.errors %}
+                                 <span class="text-danger">{{ error }}</span></br>
+                             {% endfor %}
+                         {% endif %}
+      </div>
+
+
+      <div class="form-group">
+                 {{ form.letter_head.label() }}
+                 {{ form.letter_head(class="form-control-file") }}
+                 {% if form.letter_head.errors %}
+                     {% for error in form.letter_head.errors %}
+                         <span class="text-danger">{{ error }}</span></br>
+                     {% endfor %}
+                 {% endif %}
+        </div>
+
+        <div class="form-group">
+                 {{ form.signature.label() }}
+                 {{ form.signature(class="form-control-file") }}
+                 {% if form.signature.errors %}
+                     {% for error in form.signature.errors %}
+                         <span class="text-danger">{{ error }}</span></br>
+                     {% endfor %}
+                 {% endif %}
+          </div>
+
+  </fieldset>
+  <div class="form-group">
+    {{ form.submit(class="btn btn-primary")}}
+  </div>
+
+
+</div>
+
+
+{% endblock %}

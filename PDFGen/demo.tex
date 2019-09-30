@@ -1,0 +1,100 @@
+
+    \documentclass{letter}
+
+
+    % preamble
+    \usepackage{geometry}
+    \geometry{%
+    a4paper,
+    left=20 mm,
+    right=20 mm,
+    top=20 mm,
+    bottom=20 mm
+    }
+
+    %\usepackage[a4paper, margin=1in]{geometry}
+
+
+    % allow graphics and pdfs
+    \usepackage{graphicx,subcaption}
+    \usepackage{pdfpages}
+
+    % allow captions
+    \usepackage[justification=centering]{caption}
+
+    % allow colours
+    %\usepackage[dvipsnames]{xcolor}
+
+    % allow lists
+    \usepackage{enumitem}
+
+    % allow hyperlinks
+    \usepackage{hyperref}
+    \usepackage{fancyref}
+
+    % allow easy obtain of page count
+    \usepackage{lastpage}
+
+
+    % Helvet font (uncomment if required)
+    %\usepackage{sansmathfonts}
+    \usepackage{helvet}
+    \renewcommand{\familydefault}{\sfdefault}
+    \usepackage[T1]{fontenc}
+    \usepackage{textcomp}
+
+    \usepackage{array}
+
+
+    \makeatletter
+    \def\opening#1{\ifx\@empty\fromaddress
+      \thispagestyle{firstpage}%
+        {\raggedleft\@date\par}%
+      \else  % home address
+        \thispagestyle{empty}%
+        {\noindent\let\\\cr\halign{##\hfil\cr\ignorespaces
+          \fromaddress \cr\noalign{\kern 2\parskip}%
+          \@date\cr}\par}%
+      \fi
+      \vspace{2\parskip}%
+      {\raggedright \toname \\ \toaddress \par}%
+      \vspace{2\parskip}%
+      #1\par\nobreak}
+    \makeatother
+    
+        \usepackage{eso-pic}
+
+        \newcommand\BackgroundPic{
+            \put(0,0){
+            \parbox[b][\paperheight]{\paperwidth}{%
+            \vfill
+            \centering
+            \includegraphics[width=\paperwidth,height=\paperheight]{lhead.pdf}
+            \vfill
+            }}}
+
+    \signature{\vspace{-2cm}Charles Matthews }
+    \address{CustomerName\\123 demo st\\London\\SW1 000\\UK}
+    \begin{document}
+        \AddToShipoutPicture*{\BackgroundPic}
+            \setlength{\extrarowheight}{10pt}
+    \begin{letter}{\bf{RE: Unpaid Invoice Follow-up}}
+    \opening{To Whom it may concern,}
+
+    Generic text here to explain problem.
+
+        You can find Charles Matthews at \href{mailto:charles.matthews.test@ey.com}{charles.matthews.test@ey.com}.
+
+
+    \begin{center}
+    \begin{tabular}{p{2cm} p{4cm} p{4cm}}
+        & \bf{Invoice Number} & \bf{Amount} \\[0.5ex]
+       \hline
+    1 & 123&GBP 1231.12\\  2 & 456&USD 98765.12\\  
+    \end{tabular}
+    \end{center}
+
+        \closing{Warm Regards, \\ \includegraphics[width=4cm,height=3cm,keepaspectratio]{signature.png}}
+    \end{letter}
+    \end{document}
+    
