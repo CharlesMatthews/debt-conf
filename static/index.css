@@ -23,13 +23,13 @@
   color: white;
   font-weight: bold;
   font-size: 80px;
-  border: 10px solid #f1f1f1;
+  border: 10px solid #FEE600;
   position: relative;
   left: 50%;
   transform: translate(-50%, 30%);
 
   width: 490px;
-  padding: 20px;
+  /*  padding: 20px; */
   text-align: center;
 }
 

@@ -5,7 +5,9 @@ import os
 from pylatex import Document, Head, Tabular, MiniPage, LargeText, LineBreak, MediumText
 from pylatex.utils import italic, bold, NoEscape
 
-def make_pdf(auditor_name, auditor_email, address_list, invoices, outfile="outfile", letter_head=None, signature_file=None):
+def make_pdf(auditor_name, auditor_email, address_list, invoices, outfile="outfile", letter_head=None, signature_file=None, client_signatory=None):
+    print(letter_head)
+    print(signature_file)
     cust_name = address_list[0]
     tex_address = r"\\".join(address_list)
 
@@ -28,11 +30,8 @@ def make_pdf(auditor_name, auditor_email, address_list, invoices, outfile="outfi
 
 
     % allow graphics and pdfs
-    \usepackage{graphicx,subcaption}
+    \usepackage{graphicx}
     \usepackage{pdfpages}
-
-    % allow captions
-    \usepackage[justification=centering]{caption}
 
     % allow colours
     %\usepackage[dvipsnames]{xcolor}
@@ -43,9 +42,6 @@ def make_pdf(auditor_name, auditor_email, address_list, invoices, outfile="outfi
     % allow hyperlinks
     \usepackage{hyperref}
     \usepackage{fancyref}
-
-    % allow easy obtain of page count
-    \usepackage{lastpage}
 
 
     % Helvet font (uncomment if required)
@@ -93,7 +89,7 @@ def make_pdf(auditor_name, auditor_email, address_list, invoices, outfile="outfi
     if signature_file is not None:
         preamble += r"""\vspace{-2cm}"""
 
-    preamble += auditor_name + r""" }
+    preamble += client_signatory + r""" }
     \address{""" + tex_address + r"""}
     \longindentation=0pt
     \begin{document}"""
